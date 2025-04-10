@@ -3,6 +3,8 @@ import java.util.Random;
 
 public class App_Matriz {
 
+    static int[][] matriz = null;
+
     public static void main(String[] args) {
         menu();
     }
@@ -37,7 +39,7 @@ public class App_Matriz {
 
         switch (opcion) {
             case 1:
-                crearMatriz(int filas,int cols);
+                crearMatriz(sc);
                 break;
             case 2:
                 llenarMatriz(int[][] matriz);
