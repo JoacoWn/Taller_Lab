@@ -10,47 +10,11 @@ public class App_Matriz {
     public static void menu() {
         int opcion;
         Scanner sc = new Scanner(System.in);
-        int[][] matriz = null;
-        int filas = 0;
-        int cols = 0;
-
         do {
             mostrarMenu();
             opcion = obtenerOpcion(sc);
-
-            if (opcion >= 1 && opcion <= 4 && matriz == null && opcion != 1) {
-                System.out.println("Primero debe crear una matriz (Opción 1)");
-                continue;
-            }
-
-            switch (opcion) {
-                case 1:
-                    System.out.println("Ingrese cantidad de filas:");
-                    filas = sc.nextInt();
-                    System.out.println("Ingrese cantidad de columnas:");
-                    cols = sc.nextInt();
-                    if (validarDimensiones(filas, cols)) {
-                        matriz = crearMatriz(filas, cols);
-                        System.out.println("Matriz creada correctamente");
-                    }
-                    break;
-                case 2:
-                    matriz = llenarMatriz(matriz);
-                    System.out.println("Matriz llenada aleatoriamente");
-                    break;
-                case 3:
-                    mostrarFila(matriz, filas);
-                    break;
-                case 4:
-                    matrizCero(matriz);
-                    break;
-                case 5:
-                    System.out.println("Cerrando programa...");
-                    break;
-                default:
-                    System.out.println("Opción no válida.");
-            }
-        } while (opcion != 5);
+            ejecutarOpcion(opcion, sc);
+        } while (opcion != 6);
     }
 
     public static void mostrarMenu() {
@@ -68,23 +32,62 @@ public class App_Matriz {
         return sc.nextInt();
     }
 
-    public static boolean validarDimensiones(int filas, int cols) {
-        if (filas > 0 && cols > 0) {
-            return true;
-        } else {
-            System.out.println("Las filas y columnas deben ser mayores que 0.");
-            return false;
+    public static void ejecutarOpcion(int opcion, Scanner sc) {
+        int filas = matriz[i].lenght;
+
+        switch (opcion) {
+            case 1:
+                crearMatriz(int filas,int cols);
+                break;
+            case 2:
+                llenarMatriz(int[][] matriz);
+                break;
+            case 3:
+                mostrarFila(int[][] matriz, int filas);
+                break;
+            case 4:
+                matrizCero(int[][] matriz);
+                break;
+            case 5:
+                System.out.println("Cerrando programa...");
+                break;
+            default:
+                System.out.println("Opción no válida.");
         }
     }
 
+    public static int[][] cantidadFilasCols() {
+        System.out.println("Ingrese cantidad de filas");
+        Scanner filas = new Scanner(System.in);
+        System.out.println("Ingrese cantidad de Columnas");
+        Scanner cols = new Scanner(System.in);
+        int[][] cantidad = new int[filas.nextInt()][cols.nextInt()];
+        return cantidad;
+    }
+
+    public static boolean validarDimensiones(int filas, int cols) {
+        cantidadFilasCols();
+        boolean validar = false;
+        if (filas > 0 && cols > 0) {
+            validar = true;
+            return true;
+        } else {
+            System.out.println("Las filas y columnas deben ser mayores que 0.");
+        }
+        return false;
+    }
+
     public static int[][] crearMatriz(int filas, int cols) {
-        return new int[filas][cols];
+        int[][] matriz = new int[filas][cols];
+        return matriz;
     }
 
     public static int[][] llenarMatriz(int[][] matriz) {
         Random randomNumbers = new Random();
-        for (int i = 0; i < matriz.length; i++) {
-            for (int j = 0; j < matriz[0].length; j++) {
+        int filas = matriz.length;
+        int cols = matriz[0].length;
+        for (int i = 0; i < filas; i++) {
+            for (int j = 0; j < cols; j++) {
                 matriz[i][j] = randomNumbers.nextInt(10);
             }
         }
@@ -94,33 +97,35 @@ public class App_Matriz {
     public static int preguntarFila() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Ingrese fila que quiere ver:");
-        return sc.nextInt();
+        int filaPedida = sc.nextInt();
+        return filaPedida;
     }
 
     public static void mostrarFila(int[][] matriz, int filas) {
         int filaPedida = preguntarFila();
-        if (filaPedida >= 0 && filaPedida < filas) {
+        if (filaPedida < filas) {
             for (int i = 0; i < matriz[0].length; i++) {
-                System.out.print(matriz[filaPedida][i] + " ");
+                System.out.println(matriz[filaPedida][i]);
             }
-            System.out.println();
         } else {
-            System.out.println("Ingrese una fila valida entre 0 y " + (filas-1));
+            System.out.println("Ingrese una fila valida de las: " + matriz.length);
         }
     }
 
     public static boolean matrizCero(int[][] matriz) {
+        int filas = matriz.length;
+        int cols = matriz[0].length;
         int contadorCeros = 0;
-        int totalElementos = matriz.length * matriz[0].length;
 
-        for (int[] fila : matriz) {
-            for (int valor : fila) {
-                if (valor == 0) {
+        for (int i = 0; i < filas; i++) {
+            for (int j = 0; j < cols; j++) {
+                if (matriz[i][j] == 0) {
                     contadorCeros++;
                 }
             }
         }
 
+        int totalElementos = filas * cols;
         double porcentajeCeros = (double) contadorCeros / totalElementos;
 
         if (porcentajeCeros > 0.5) {
