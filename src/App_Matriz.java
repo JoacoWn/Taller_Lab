@@ -83,47 +83,45 @@ public class App_Matriz {
         return matriz;
     }
 
-    public static int[][] llenarMatriz(int[][] matriz) {
+        public static int[][] llenarMatriz(int[][] matriz) {
 
-        /* La matriz debe ser llenada con datos de tipo entero, de forma aleatoria, entre 0 y 9, considere: */
-        Random randomNumbers = new Random();
-        crearMatriz();
-        int filas = matriz.length;
-        int cols = matriz[0].length;
-        for (int i = 0; i < filas; i++) {
-            for (int j = 0; j < cols; j++) {
-                matriz[i][j] = randomNumbers.nextInt(10);
+            /* La matriz debe ser llenada con datos de tipo entero, de forma aleatoria, entre 0 y 9, considere: */
+
+            Random randomNumbers = new Random();
+            int filas = matriz.length;
+            int cols = matriz[0].length;
+            for (int i = 0; i < filas; i++) {
+                for (int j = 0; j < cols; j++) {
+                    matriz[i][j] = randomNumbers.nextInt(10);
+                }
             }
+            return matriz;
         }
-        return matriz;
-    }
-}
-    public static void preguntarFila(Scanner filaPedida){
 
+    public static int preguntarFila() {
+        Scanner sc = new Scanner(System.in);
         System.out.println("Ingrese fila que quiere ver:");
+        int filaPedida = sc.nextInt();
         return filaPedida;
     }
 
-    void mostrarFila(int matriz[ ][ ], int filas) {
-
-        /* Muestre por pantalla toda la fila que desee el usuario, considere: */
-        preguntarFila();
+    public static void mostrarFila(int[][] matriz, int filas) {
+        int filaPedida = preguntarFila();
         if (filaPedida <= filas) {
-            for (int i = 0; i < columnas; i++) {
-                System.out.println(matriz[sc][i]);
-
+            for (int i = 0; i < matriz[0].length; i++) {
+                System.out.println(matriz[filaPedida][i]);
             }
+        } else {
+            System.out.println("Ingrese una fila valida de las: " + matriz.length);
         }
-        else (filaPedida > filas) {
-            System.out.println("Ingrese una fila valida de las :" &filas);
-        }
-
     }
+}
 
     boolean matrizCero(int matriz[ ][ ] ) {
 
             /* Verifique si la matriz es de TIPO CERO, esto sucede cuando más del 50% de los valores de la matriz son CERO, considere:*/
-...
+        matriz();
+        if()
 
     }
 
