@@ -54,7 +54,7 @@ public class App_Matriz {
                 System.out.println("Opción no válida.");
         }
     }
-    public static double[][] cantidadFilasCols() {
+    public static int[][] cantidadFilasCols() {
         System.out.println("Ingrese cantidad de filas");
         Scanner filas = new Scanner(System.in);
         System.out.println("Ingrese cantidad de Columnas");
@@ -65,41 +65,58 @@ public class App_Matriz {
 
     boolean validarDimensiones(int filas, int cols) {
         cantidadFilasCols();
-        if (filas <= 0) {
-            System.out.println("El numero de filas no es valido");
-        } else if (cols <= 0) {
-            System.out.println("El numero de columnas no es valido");
+        boolean validar = false;
+        if (filas > 0 && cols > 0) {
+            validar = true;
+            return true;
         } else {
-            crearMatriz(filas, cols);
+            System.out.println("Error: Las filas y columnas deben ser mayores que 0.");
         }
+        return false;
     }
     public static int [ ][ ] crearMatriz(int filas, int cols) {
 
         /* Una vez estén capturadas y validadas las dimensiones de la matriz,
         se debe crear la matriz, por lo que recibe como parámetros las dimensiones y devuelve una matriz de enteros, considere:
          */
-        Random randomNumbers = new Random();
         int[][] matriz = new int[filas][cols];
+        return matriz;
+    }
+
+    public static int[][] llenarMatriz(int[][] matriz) {
+
+        /* La matriz debe ser llenada con datos de tipo entero, de forma aleatoria, entre 0 y 9, considere: */
+        Random randomNumbers = new Random();
+        crearMatriz();
+        int filas = matriz.length;
+        int cols = matriz[0].length;
         for (int i = 0; i < filas; i++) {
             for (int j = 0; j < cols; j++) {
-                matriz[i][j] = rand.nextInt(10);
+                matriz[i][j] = randomNumbers.nextInt(10);
             }
         }
         return matriz;
     }
+}
+    public static void preguntarFila(Scanner filaPedida){
+
+        System.out.println("Ingrese fila que quiere ver:");
+        return filaPedida;
     }
 
-    <tipo> llenarMatriz(int matriz [ ][ ] ) {
-
-        /* La matriz debe ser llenada con datos de tipo entero, de forma aleatoria, entre 0 y 9, considere: */
-...
-
-    }
-
-    void mostrarFila(int matriz[ ][ ], int fila) {
+    void mostrarFila(int matriz[ ][ ], int filas) {
 
         /* Muestre por pantalla toda la fila que desee el usuario, considere: */
-...
+        preguntarFila();
+        if (filaPedida <= filas) {
+            for (int i = 0; i < columnas; i++) {
+                System.out.println(matriz[sc][i]);
+
+            }
+        }
+        else (filaPedida > filas) {
+            System.out.println("Ingrese una fila valida de las :" &filas);
+        }
 
     }
 
