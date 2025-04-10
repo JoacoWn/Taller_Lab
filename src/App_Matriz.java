@@ -54,28 +54,23 @@ public class App_Matriz {
         }
     }
     public static double[][] cantidadFilasCols() {
-        int[][] cantidad =
-                System.out.printl("Ingrese cantidad de filas");
-                Scanner filas = new Scanner(Int);
-                System.out.printl("Ingrese cantidad de Columnas");
-                Scanner cols = new Scanner(Int);
-                new int[filas][cols];
+        System.out.println("Ingrese cantidad de filas");
+        Scanner filas = new Scanner(System.in);
+        System.out.println("Ingrese cantidad de Columnas");
+        Scanner cols = new Scanner(System.in);
+        int[][] cantidad = new int[filas.nextInt()][cols.nextInt()];
         return cantidad;
     }
 
     boolean validarDimensiones(int filas, int cols) {
-
-        /* Las dimensiones de la matriz son definidas por el usuario (m: filas, n: columnas) y se debe considerar que estos datos ingresados sean válidos, es decir, debe considerar además un método que valide dichas dimensiones, considere: */
         cantidadFilasCols();
-        if (filas <=0) {
+        if (filas <= 0) {
             System.out.println("El numero de filas no es valido");
-        }
-        elif (cols <=0) {
+        } else if (cols <= 0) {
             System.out.println("El numero de columnas no es valido");
+        } else {
+            crearMatriz(filas, cols);
         }
-        else
-            crearMatriz(filas,cols);
-
     }
     public static int [ ][ ] crearMatriz(int filas, int cols) {
 
