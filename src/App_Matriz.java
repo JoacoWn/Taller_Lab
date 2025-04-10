@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.Random;
 
 public class App_Matriz {
 
@@ -77,23 +78,15 @@ public class App_Matriz {
         /* Una vez estén capturadas y validadas las dimensiones de la matriz,
         se debe crear la matriz, por lo que recibe como parámetros las dimensiones y devuelve una matriz de enteros, considere:
          */
+        Random randomNumbers = new Random();
         int[][] matriz = new int[filas][cols];
-        System.out.println("Ingrese los valores para la matriz " + nombre + ":");
         for (int i = 0; i < filas; i++) {
             for (int j = 0; j < cols; j++) {
-                System.out.printf("Ingrese valor para fila %d columna %d: ", i, j);
-                matriz[i][j] = sc.nextInt();
+                matriz[i][j] = rand.nextInt(10);
             }
         }
         return matriz;
     }
-
-
-
-
-
-...
-
     }
 
     <tipo> llenarMatriz(int matriz [ ][ ] ) {
